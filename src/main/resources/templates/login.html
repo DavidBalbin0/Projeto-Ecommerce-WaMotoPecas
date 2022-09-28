@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{base :: head}">
+</head>
+<nav th:replace="~{nav :: nav}"></nav>
+<script th:src="@{/js/login.js}" defer></script>
+<script th:src="@{/js/crud.js}" defer></script>
+<body>
+    <div class="card text-bg-dark ms-autoS">
+        <div class="card-header text-center">Insira seus dados</div>
+        <div class="card-body">
+            <form  method="post">
+                <label>
+                    <input type="text" id="email" placeholder="Insira seu email">
+                </label>
+                <label>
+                    <input type="password" id="senha" placeholder="insira sua senha">
+                </label>
+                <button class="btn btn-primary" type="button" onclick="logarUsuario()" >entrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

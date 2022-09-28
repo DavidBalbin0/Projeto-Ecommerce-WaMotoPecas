@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{base :: head}">
+        <script th:src="@{/js/painelcontrole.js}" defer></script>
+    </head>
+    <nav th:replace="~{nav :: nav}"></nav>
+    <body>
+        <div>
+            <h3>Filtrar estoque</h3>
+            <h6 id="txtId" class="text-center"></h6>
+            <form class="container m-auto col-4">
+                <label class="row mt-1">
+                    <input id="txtNome" class="form-control"placeholder="Nome do Produto" onchange="">
+                </label>
+                <label class="row mt-1">
+                    <input id="txtPreco" class="form-control" placeholder="Preço">
+                </label >
+                <label class="row mt-1">
+                    <input id="txtUrlImagem" class="form-control" placeholder="UrlImagem">
+                </label>
+                <label class="row mt-1">
+                    <input id="txtDescricao" class="form-control" placeholder="Descrição">
+                </label>
+                <div class="text-center mt-1">
+                    <button type="button" onclick="cadastrarProduto()" id="btnCadastrar" class="btn btn-primary row">Cadastrar</button>
+                    <button type="button" onclick="excluirProduto()" id="btnExcluir" class="btn btn-danger ms-3">Excluir</button>
+                    <button type="button" onclick="alterarProduto()" id="btnAlterar" class="btn btn-warning ms-1">Alterar</button>
+                    <button type="button" onclick="cancelarFormulario()" id="btnCancelar" class="btn btn-secondary row ms-1">Cancelar</button>
+                </div>
+            </form>
+        </div>
+        <h2>Painel de Controle</h2>
+        <div class="container bg-dark">
+            <table id="minhaTabela" class="table table-dark table-striped-columns col-10 m-auto">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome do Produto</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Descrição</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabela">
+
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

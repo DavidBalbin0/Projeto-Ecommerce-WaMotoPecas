@@ -1,0 +1,28 @@
+.imagem-carrossel{
+    object-fit: cover;
+    object-position: 0 45%;
+    height: 400px;
+}
+
+.imagem-marcas{
+    object-fit: contain;
+    width: 150px;
+    height: 150px;
+}
+
+
+
+.cartao-categoria{
+    width: 18rem;
+}
+
+.cartao-posicao-imagem{
+    object-fit: contain;
+    height: 200px;
+    width: 200px;
+}
+
+.mapa-loja{
+    border: 0;
+    justify-content: center;
+}
