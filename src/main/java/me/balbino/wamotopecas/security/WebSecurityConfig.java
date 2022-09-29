@@ -1,8 +1,7 @@
 package me.balbino.wamotopecas.security;
 
 
-import me.balbino.wamotopecas.repository.UsuarioRepository;
-import me.balbino.wamotopecas.security.AutenticacaoViaTokenFilter;
+import me.balbino.wamotopecas.repository.UserRepository;
 import me.balbino.wamotopecas.service.MeTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +17,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfigurationSource;
 
 
 @Configuration
@@ -30,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MeTokenService tokenService;
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UserRepository userRepository;
     @Override
     @Bean
     protected AuthenticationManager authenticationManager() throws Exception {
@@ -52,9 +50,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/home/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth").permitAll()
                 .antMatchers(HttpMethod.GET, "/login").permitAll()
+                .antMatchers(HttpMethod.GET, "/cep").permitAll()
                 .anyRequest().authenticated().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
+                .and().addFilterBefore(new AuthenticationTokenFilter(tokenService, userRepository), UsernamePasswordAuthenticationFilter.class);
     }
 
 

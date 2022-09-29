@@ -1,11 +1,11 @@
 package me.balbino.wamotopecas.model;
 
-import me.balbino.wamotopecas.dto.FormProduto;
+import me.balbino.wamotopecas.dto.FormProductDto;
 
 import javax.persistence.*;
 
 @Entity
-public class Produto {
+public class Product {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
@@ -14,14 +14,14 @@ public class Produto {
     private String descricao;
 
 
-    public Produto(String nome, String imagemUrl, Long preco, String descricao) {
+    public Product(String nome, String imagemUrl, Long preco, String descricao) {
         this.nome = nome;
         this.imagemUrl = imagemUrl;
         this.preco = preco;
         this.descricao = descricao;
     }
 
-    public Produto() {
+    public Product() {
 
     }
 
@@ -65,7 +65,7 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public void converterParaProduto(FormProduto novoProduto){
+    public void converterParaProduto(FormProductDto novoProduto){
         this.nome = novoProduto.getNomeProduto();
         this.imagemUrl = novoProduto.getImagemUrl();
         this.preco = novoProduto.getPreco();

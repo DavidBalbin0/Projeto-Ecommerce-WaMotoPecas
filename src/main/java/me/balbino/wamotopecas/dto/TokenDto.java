@@ -2,10 +2,10 @@ package me.balbino.wamotopecas.dto;
 
 public class TokenDto {
     private String token;
-    private String tipo;
-    public TokenDto(String token, String tipo) {
+    private String type;
+    public TokenDto(String token, String type) {
         this.token = token;
-        this.tipo = tipo;
+        this.type = type;
     }
 
     public String getToken() {
@@ -16,11 +16,11 @@ public class TokenDto {
         this.token = token;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getType() {
+        return type;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setType(String type) {
+        this.type = type;
     }
 }

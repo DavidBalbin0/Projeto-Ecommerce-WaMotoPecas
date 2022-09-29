@@ -1,11 +1,10 @@
 package me.balbino.wamotopecas.security;
 
-import me.balbino.wamotopecas.model.Usuario;
-import me.balbino.wamotopecas.repository.UsuarioRepository;
+import me.balbino.wamotopecas.model.User;
+import me.balbino.wamotopecas.repository.UserRepository;
 import me.balbino.wamotopecas.service.MeTokenService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.token.TokenService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -16,15 +15,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
+public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
     private MeTokenService tokenService;
-    private UsuarioRepository usuarioRepository;
+    private UserRepository userRepository;
 
-    public AutenticacaoViaTokenFilter(MeTokenService tokenService, UsuarioRepository usuarioRepository) {
+    public AuthenticationTokenFilter(MeTokenService tokenService, UserRepository userRepository) {
 
         this.tokenService = tokenService;
-        this.usuarioRepository = usuarioRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -43,14 +42,14 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
     private void autenticarCliente(String token) {
         Long idUsuario = tokenService.getIdUsuario(token);
         System.out.println("id do usuario:" + idUsuario);
-        Usuario usuario =pegaUsuario(idUsuario);
-        System.out.println(usuario.getEmail());
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
+        User user =pegaUsuario(idUsuario);
+        System.out.println(user.getEmail());
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
-    private Usuario pegaUsuario(Long id){
-        Optional<Usuario> usuario = usuarioRepository.findById(id);
+    private User pegaUsuario(Long id){
+        Optional<User> usuario = userRepository.findById(id);
         if(usuario.isPresent()){
             return usuario.get();
         }else {

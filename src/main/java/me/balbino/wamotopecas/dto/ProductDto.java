@@ -1,9 +1,9 @@
 package me.balbino.wamotopecas.dto;
 
-import me.balbino.wamotopecas.model.Produto;
+import me.balbino.wamotopecas.model.Product;
 import org.springframework.data.domain.Page;
 
-public class ProdutoDto {
+public class ProductDto {
 
     private Long id;
     private String nome;
@@ -11,21 +11,21 @@ public class ProdutoDto {
     private Long preco;
     private String descricao;
 
-    public static Page<ProdutoDto> converterPage(Page<Produto> produtos) {
-       return produtos.map(ProdutoDto::new);
+    public static Page<ProductDto> converterPage(Page<Product> produtos) {
+       return produtos.map(ProductDto::new);
     }
 
-    public static ProdutoDto converter(Produto produto){
-        return new ProdutoDto(produto);
+    public static ProductDto converter(Product product){
+        return new ProductDto(product);
     }
 
 
-    public ProdutoDto(Produto produto) {
-        this.id = produto.getId();
-        this.nome = produto.getNome();
-        this.imagemUrl = produto.getImagemUrl();
-        this.preco = produto.getPreco();
-        this.descricao = produto.getDescricao();
+    public ProductDto(Product product) {
+        this.id = product.getId();
+        this.nome = product.getNome();
+        this.imagemUrl = product.getImagemUrl();
+        this.preco = product.getPreco();
+        this.descricao = product.getDescricao();
     }
 
     public Long getId() {

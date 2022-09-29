@@ -1,20 +1,20 @@
 package me.balbino.wamotopecas.dto;
 
-import me.balbino.wamotopecas.model.Produto;
-import me.balbino.wamotopecas.repository.ProdutoRepository;
+import me.balbino.wamotopecas.model.Product;
+import me.balbino.wamotopecas.repository.ProductRepository;
 
-public class FormProduto {
+public class FormProductDto {
 
     private String nomeProduto;
     private String imagemUrl;
     private Long preco;
     private String descricao;
 
-    public FormProduto(Produto produto) {
-        this.nomeProduto = produto.getNome();
-        this.imagemUrl = produto.getImagemUrl();
-        this.preco = produto.getPreco();
-        this.descricao = produto.getDescricao();
+    public FormProductDto(Product product) {
+        this.nomeProduto = product.getNome();
+        this.imagemUrl = product.getImagemUrl();
+        this.preco = product.getPreco();
+        this.descricao = product.getDescricao();
     }
 
     public String getNomeProduto() {
@@ -49,12 +49,12 @@ public class FormProduto {
         this.descricao = descricao;
     }
 
-    public Produto atualizar(Long id, ProdutoRepository produtoRepository) {
-        Produto produto = produtoRepository.getOne(id);
+    public Product atualizar(Long id, ProductRepository productRepository) {
+        Product product = productRepository.getOne(id);
 
-        produto.setNome(this.nomeProduto);
-        produto.setPreco(this.preco);
+        product.setNome(this.nomeProduto);
+        product.setPreco(this.preco);
 
-        return produto;
+        return product;
     }
 }

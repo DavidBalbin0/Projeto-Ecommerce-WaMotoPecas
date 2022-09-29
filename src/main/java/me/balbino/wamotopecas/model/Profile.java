@@ -8,11 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Perfil implements GrantedAuthority {
+public class Profile implements GrantedAuthority {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nomePerfil;
+    private String nameProfile;
 
     public Long getId() {
         return id;
@@ -22,16 +22,16 @@ public class Perfil implements GrantedAuthority {
         this.id = id;
     }
 
-    public String getNomePerfil() {
-        return nomePerfil;
+    public String getNameProfile() {
+        return nameProfile;
     }
 
-    public void setNomePerfil(String nomePerfil) {
-        this.nomePerfil = nomePerfil;
+    public void setNameProfile(String nomePerfil) {
+        this.nameProfile = nomePerfil;
     }
 
     @Override
     public String getAuthority() {
-        return this.nomePerfil;
+        return this.nameProfile;
     }
 }

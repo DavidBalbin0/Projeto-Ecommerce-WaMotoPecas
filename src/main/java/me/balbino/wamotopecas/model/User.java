@@ -1,6 +1,6 @@
 package me.balbino.wamotopecas.model;
 
-import me.balbino.wamotopecas.dto.FormUsuario;
+import me.balbino.wamotopecas.dto.FormUserDto;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,15 +10,18 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Usuario implements UserDetails {
+public class User implements UserDetails {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
     private String senha;
+    @OneToOne
+    Address cep = new Address();
+
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<Perfil> perfis = new ArrayList<>();
+    private List<Profile> perfis = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -50,6 +53,14 @@ public class Usuario implements UserDetails {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Address getCep() {
+        return cep;
+    }
+
+    public void setCep(Address cep) {
+        this.cep = cep;
     }
 
     @Override
@@ -87,7 +98,7 @@ public class Usuario implements UserDetails {
         return true;
     }
 
-    public void converter(FormUsuario form) {
+    public void converter(FormUserDto form) {
         this.nome = form.getNome();
         this.email = form.getEmail();
         this.senha = form.getSenha();

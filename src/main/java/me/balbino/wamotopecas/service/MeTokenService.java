@@ -3,7 +3,7 @@ package me.balbino.wamotopecas.service;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import me.balbino.wamotopecas.model.Usuario;
+import me.balbino.wamotopecas.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class MeTokenService {
     private String secret;
 
     public String gerarToken(Authentication authentication) {
-        Usuario logado = (Usuario) authentication.getPrincipal();
+        User logado = (User) authentication.getPrincipal();
         Date hoje = new Date();
         Date dataExpiracao = new Date(hoje.getTime() + Long.parseLong(expiration));
         return Jwts.builder()

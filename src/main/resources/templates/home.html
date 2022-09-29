@@ -28,11 +28,11 @@
             </div>
             <div class="container">
                 <div class="row" id="app">
-                    <div v-for="produto in produtos" class=" mt-2 ms-2 col-3 card cartao-categoria ">
-                        <img v-bind:src="produto.imagemUrl " class="card-img-top cartao-posicao-imagem" alt="Product image">
+                    <div v-for="product in produtos" class=" mt-2 ms-2 col-3 card cartao-categoria ">
+                        <img v-bind:src="product.imagemUrl " class="card-img-top cartao-posicao-imagem" alt="Product image">
                         <div class="card-body">
-                            <h5 class="card-title ">{{produto.nome}}</h5>
-                            <p class="card-text ">{{produto.preco}}</p>
+                            <h5 class="card-title ">{{product.nome}}</h5>
+                            <p class="card-text ">{{product.preco}}</p>
                             <a href="#" class="btn btn-primary">Ver</a>
                         </div>
                     </div>

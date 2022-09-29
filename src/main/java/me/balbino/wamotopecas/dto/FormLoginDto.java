@@ -2,7 +2,7 @@ package me.balbino.wamotopecas.dto;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
-public class LoginForm {
+public class FormLoginDto {
 
     private String email;
     private String senha;
